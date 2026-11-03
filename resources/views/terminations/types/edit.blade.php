@@ -1,0 +1,5 @@
+@extends('layouts.admin')
+@section('title','Editar tipo de salida')
+@section('content')
+<div class="card card-primary"><div class="card-header"><h3 class="card-title">Editar tipo de salida</h3></div><form method="POST" action="{{ route('termination-types.update',$terminationType) }}">@csrf @method('PUT')<div class="card-body">@if($errors->any())<div class="alert alert-danger">{{ $errors->first() }}</div>@endif<div class="form-group"><label>Nombre *</label><input name="name" value="{{ old('name',$terminationType->name) }}" class="form-control" required maxlength="150"></div><div class="custom-control custom-switch"><input type="checkbox" class="custom-control-input" id="active" name="active" value="1" @checked(old('active',$terminationType->active))><label class="custom-control-label" for="active">Activo</label></div></div><div class="card-footer"><button class="btn btn-primary">Guardar</button> <a href="{{ route('termination-types.index') }}" class="btn btn-secondary">Cancelar</a></div></form></div>
+@endsection
